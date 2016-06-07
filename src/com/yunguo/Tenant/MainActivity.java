@@ -35,6 +35,8 @@ public class MainActivity extends FragmentActivity{
 	private ArrayList<Fragment> pagerItemList = new ArrayList<Fragment>();//fragmeng  list
 	private MainPagerAdapter myAdapter;//fragment  adapter
 	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,6 +74,8 @@ public class MainActivity extends FragmentActivity{
 		pagerItemList.add(new HouseMessageFragment());
 		pagerItemList.add(new RecordFragment());
 		pagerItemList.add(new UserMessageFragment());
+		
+		
 		myAdapter = new MainPagerAdapter(getSupportFragmentManager(), pagerItemList);
 		mainpager.setAdapter(myAdapter);
 	}
