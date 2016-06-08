@@ -22,6 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name="com.yunguo.Tenant.View.MyRentHistory">
+            <intent-filter></intent-filter>
+        </activity>
+        <activity 
+            android:name="com.yunguo.Tenant.View.MySwingHistory">
+            <intent-filter></intent-filter>
+        </activity>
+        <activity 
+            android:name="com.yunguo.Tenant.View.MyOpenDoorHistory">
+            <intent-filter></intent-filter>
+        </activity>
+        <activity 
+            android:name="com.yunguo.Tenant.View.MyNote">
+            <intent-filter></intent-filter>
+        </activity>
     </application>
 
 </manifest>
