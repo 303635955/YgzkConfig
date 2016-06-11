@@ -3,7 +3,7 @@ package com.yunguo.TenantFragment;
 
 import com.yunguo.Tenant.R;
 import com.yunguo.Tenant.R.layout;
-import com.yunguo.Tenant.View.MyRentHistory;
+import com.yunguo.Tenant.View.MyRentHistoryActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -51,25 +51,25 @@ public class RecordFragment extends Fragment implements OnClickListener{
 			case R.id.myrenthistory:
 				Toast.makeText(getActivity(),"frist", Toast.LENGTH_SHORT).show();
 				Intent intentrent = new Intent(getActivity(),
-						MyRentHistory.class);
+						MyRentHistoryActivity.class);
 				startActivity(intentrent);
 				break;
 			case R.id.myswinghistory:
 				Toast.makeText(getActivity(),"secoend", Toast.LENGTH_SHORT).show();
 				Intent intentswing = new Intent(getActivity(),
-						MyRentHistory.class);
+						MyRentHistoryActivity.class);
 				startActivity(intentswing);
 				break;
 			case R.id.myopendoorhistory:
 				Toast.makeText(getActivity(),"thrid", Toast.LENGTH_SHORT).show();
 				Intent intentopen = new Intent(getActivity(),
-						MyRentHistory.class);
+						MyRentHistoryActivity.class);
 				startActivity(intentopen);
 				break;
 			case R.id.mynotehistory:
 				Toast.makeText(getActivity(),"fourth", Toast.LENGTH_SHORT).show();
 				Intent intentnote = new Intent(getActivity(),
-						MyRentHistory.class);
+						MyRentHistoryActivity.class);
 				startActivity(intentnote);
 				break;
 		}
