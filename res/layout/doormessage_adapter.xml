@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" >
+    
+    <ImageView
+        android:id="@+id/door_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dip"
+        android:src="@drawable/door_icon"/>
+    
+    <TextView
+        android:id="@+id/doorId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="10dip"
+        android:layout_toRightOf="@id/door_title"
+        android:textColor="#000"
+        android:text="编号：2459001"/>
+    <TextView
+        android:id="@+id/doorStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/doorId"
+        android:layout_marginTop="5dip"
+        android:layout_toRightOf="@id/door_title"
+        android:layout_marginLeft="10dip"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:text="当前状态：已关闭"/>
+    
+   	<com.yunguo.TenantUtil.SlipButtonView  
+           android:id="@+id/doorStatusbut"
+           android:layout_width="60dip"  
+           android:layout_height="25dip"
+           android:layout_marginTop="20dip"
+           android:layout_marginRight="10dip"
+           android:layout_alignParentRight="true"
+           />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dip"
+        android:layout_below="@id/door_title"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#E5E5E5"/>
+
+</RelativeLayout>

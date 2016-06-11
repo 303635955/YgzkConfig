@@ -6,18 +6,17 @@
         android:id="@+id/img_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+         android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="25dp"
         android:src="@drawable/content_but_hezu_default"/>
     <TextView
         android:id="@+id/housename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img_title"
-        android:layout_alignTop="@id/img_title"
-        android:layout_margin="5dip"
-        android:layout_marginLeft="25dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="5dip"
         android:textSize="20sp"
         android:textColor="#000"
         android:text="保利国际"/>
@@ -26,17 +25,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img_title"
+        android:layout_alignLeft="@id/housename"
         android:layout_below="@id/housename"
-        android:layout_marginLeft="20dip"
-        android:textSize="17sp"
+        android:layout_marginTop="5dip"
+        android:textColor="#000"
+        android:textSize="16sp"
         android:text="房东:小张"/>
     <TextView
         android:id="@+id/houseaddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_title"
-        android:layout_margin="5dip"
-        android:layout_marginLeft="50dip"
+        android:layout_below="@id/ownername"
+        android:layout_alignLeft="@id/ownername"
+        android:layout_marginTop="5dip"
         android:textColor="#363636"
         android:text="地址：成都市百草路保利国际8栋605"/>
     

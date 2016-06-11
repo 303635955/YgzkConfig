@@ -15,17 +15,21 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.yunguo.Tenant.R;
+import com.yunguo.Tenant.View.DoorMessageActivity;
 import com.yunguo.TenantAdapter.HouseMessageAdapter;
 import com.yunguo.TenantModel.HouseMessageImpl;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -73,7 +77,7 @@ public class HouseMessageFragment extends Fragment{
 		 if(isVisibleToUser){
              //只有当该Fragment被用户可见的时候,才加载网络数据
 			//显示等待框
-				progressDialog = ProgressDialog.show(getActivity(), "请稍等", "正在获取...", true);
+			progressDialog = ProgressDialog.show(getActivity(), "请稍等", "正在获取...", true);
 			//获取数据
 			new Thread(thread).start(); 
      }else{
@@ -137,6 +141,21 @@ public class HouseMessageFragment extends Fragment{
 				new Thread(thread).start(); 
 			}
         }); 
+		
+		
+		HouseMessge_list.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Intent intent = new Intent(getActivity(),DoorMessageActivity.class);
+				@SuppressWarnings("unchecked")
+				Map<String,String> map = (Map<String, String>) messgeListAdapter.getItem(arg2-1);
+				intent.putExtra("HouseId", map.get("HouseId"));
+				startActivity(intent);
+				
+			}
+		});
 	}
 	
 	
