@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.yunguo.InfoBean.NoteHistorybean;
 import com.yunguo.InfoBean.OpenHistorybean;
 import com.yunguo.Tenant.R;
 
@@ -15,14 +16,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 
-public class HouseHistoryOpenAdapter extends BaseAdapter{
+public class HouseHistoryNoteAdapter extends BaseAdapter{
 	
-	private List<OpenHistorybean>  list = new ArrayList<OpenHistorybean>();
+	private List<NoteHistorybean>  list = new ArrayList<NoteHistorybean>();
     private Context context;
     private  ViewHolder viewHolder = null;
     private LayoutInflater mInflater;  
     
-    public HouseHistoryOpenAdapter(List<OpenHistorybean> data , Context context){
+    public HouseHistoryNoteAdapter(List<NoteHistorybean> data , Context context){
         this.list = data;
         this.context = context;
         mInflater = LayoutInflater.from(context); 
@@ -47,18 +48,18 @@ public class HouseHistoryOpenAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
        
         if (convertView == null) {
-            convertView =  mInflater.inflate(R.layout.history_open_adpter, null);
+            convertView =  mInflater.inflate(R.layout.history_note_adpter, null);
             viewHolder =new ViewHolder();
-            viewHolder.historyhouseid = (TextView) convertView.findViewById(R.id.house_openhistory_id);
-            viewHolder.historyownername = (TextView) convertView.findViewById(R.id.house_openhistory_name);
-            viewHolder.historytime = (TextView) convertView.findViewById(R.id.house_openhistory_housetime);
+            viewHolder.historyhousething = (TextView) convertView.findViewById(R.id.house_notehistory_name);
+            viewHolder.historyownername = (TextView) convertView.findViewById(R.id.house_notehistory_ownername);
+            viewHolder.historytime = (TextView) convertView.findViewById(R.id.house_notehistory_time);
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         
-        viewHolder.historyhouseid.setText(list.get(position).getHistoryid());
+        viewHolder.historyhousething.setText(list.get(position).getHistorything());
         viewHolder.historyownername.setText(list.get(position).getHistoryname());
         viewHolder.historytime.setText(list.get(position).getHistorytime());
        
@@ -66,6 +67,6 @@ public class HouseHistoryOpenAdapter extends BaseAdapter{
     }
 
     class ViewHolder{
-        TextView historyhouseid,historyownername,historytime;
+        TextView historyhousething,historyownername,historytime;
     }
 }
