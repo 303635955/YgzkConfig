@@ -4,7 +4,7 @@
     android:background="#FFFFFF" >
 
     <ImageView
-        android:id="@+id/img_rent_title"
+        android:id="@+id/img_swing_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -13,45 +13,49 @@
         android:src="@drawable/history_btn" />
 
     <TextView
-        android:id="@+id/house_history_name"
+        android:id="@+id/house_swinghistory_houseid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/img_rent_title"
-        android:layout_toRightOf="@id/img_rent_title"
+        android:layout_alignTop="@id/img_swing_title"
+        android:layout_toRightOf="@id/img_swing_title"
         android:layout_margin="5dip"
         android:layout_marginLeft="25dip"
-        android:text="保利国际"
+        android:text="1002"
         android:textColor="#000"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/house_history_ownername"
+        android:id="@+id/house_swinghistory_housename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/house_history_name"
+        android:layout_alignTop="@id/house_swinghistory_houseid"
         android:layout_marginLeft="20dip"
-        android:layout_toRightOf="@id/house_history_name"
-        android:text="小张"
+        android:layout_toRightOf="@id/house_swinghistory_houseid"
+        android:text="水果之家"
+        android:textColor="#000"
         android:textSize="17sp" />
 
     <TextView
-        android:id="@+id/house_history_houseaddress"
+        android:id="@+id/house_swinghistory_housething"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/img_rent_title"
-        android:layout_below="@id/house_history_name"
+        android:layout_toRightOf="@id/img_swing_title"
+        android:layout_below="@id/house_swinghistory_housename"
         android:layout_margin="5dip"
         android:layout_marginLeft="50dip"
-        android:text="地址：成都市百草路保利国际8栋605"
-        android:textColor="#363636" />
+        android:text="出入"
+        android:textColor="#363636" 
+        android:textSize="15sp"/>
 
     <TextView
-        android:id="@+id/house_history_housetime"
+        android:id="@+id/house_swinghistory_housetime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/house_history_houseaddress"
-        android:layout_toRightOf="@id/house_history_houseaddress"
+        android:layout_alignTop="@id/house_swinghistory_housething"
+        android:layout_toRightOf="@id/house_swinghistory_housething"
+        android:paddingLeft="30dip"
         android:text="2016/12/15"
-        android:textColor="#363636" />
+        android:textColor="#363636"
+        android:textSize="15sp" />
 
 </RelativeLayout>
