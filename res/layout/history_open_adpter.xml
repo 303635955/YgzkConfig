@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF" >
+
+    <ImageView
+        android:id="@+id/img_open_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/history_btn" />
+
+    <TextView
+        android:id="@+id/house_openhistory_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/img_open_title"
+        android:layout_toRightOf="@id/img_open_title"
+        android:layout_margin="5dip"
+        android:layout_marginLeft="25dip"
+        android:text="1002"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/house_openhistory_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/house_openhistory_id"
+        android:layout_marginLeft="20dip"
+        android:layout_toRightOf="@id/house_openhistory_id"
+        android:text="我的房子"
+        android:textSize="17sp" 
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/house_openhistory_housetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img_open_title"
+        android:layout_below="@id/house_openhistory_name"
+        android:text="2016/12/15  12:23"
+        android:textSize="17sp"
+        android:textColor="#363636" />
+
+</RelativeLayout>

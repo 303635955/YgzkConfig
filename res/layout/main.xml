@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <android.support.v4.view.ViewPager  
+        android:id="@+id/mainpager"  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"/> 
+        
+    <include 
+        layout="@layout/navigate_activity"
+        android:layout_width="match_parent"
+         android:background="@drawable/linearboder"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"/>   
+</RelativeLayout>
