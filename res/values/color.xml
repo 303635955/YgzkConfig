@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    
-    <color name="radiobut_text_true">#FF6600</color>
-    <color name="radiobut_text_false">#000</color>
-    
-</resources>
