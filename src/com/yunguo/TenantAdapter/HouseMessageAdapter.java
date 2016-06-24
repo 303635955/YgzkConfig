@@ -60,7 +60,7 @@ public class HouseMessageAdapter extends BaseAdapter{
         viewHolder.houseaddress = (TextView) convertView.findViewById(R.id.houseaddress);
         
         viewHolder.housename.setText(map.get("HouseName"));
-        viewHolder.ownername.setText(map.get("OwnerName"));
+       //viewHolder.ownername.setText(map.get("OwnerName"));
         viewHolder.houseaddress.setText(map.get("HouseAddress"));
         
         return convertView;

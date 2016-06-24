@@ -11,9 +11,13 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.yunguo.Tenant.R;
 import com.yunguo.TenantAdapter.DoorMessageAdapter;
+import com.yunguo.TenantUtil.MyDialogUtils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +33,7 @@ import android.widget.Toast;
 
 public class DoorMessageActivity extends Activity{
 	
+	private MyDialogUtils dialog;
 	private DoorMessageAdapter doorMessageAdapter;
 	private PullToRefreshListView DoorMessge_list;
 	private ImageButton door_back;
@@ -52,6 +57,12 @@ public class DoorMessageActivity extends Activity{
 	}
 		
 	public void findView(){
+		dialog = new MyDialogUtils(this);
+		dialog.setCancelable(false); 
+		/*dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);  
+		dialog.setCanceledOnTouchOutside(false);  */
+		dialog.setTitle("请求中……");
+		
 		loadlinear = (LinearLayout) findViewById(R.id.loadlinear);
 		gifimg = (ImageView) findViewById(R.id.gifimg);
 		showtext = (TextView) findViewById(R.id.showtext);
@@ -61,7 +72,7 @@ public class DoorMessageActivity extends Activity{
 	}
 	
 	public void setAdapter(){
-		doorMessageAdapter = new DoorMessageAdapter(doorMessageAdapterList, getApplicationContext());
+		doorMessageAdapter = new DoorMessageAdapter(doorMessageAdapterList, DoorMessageActivity.this,handler);
 		DoorMessge_list.setAdapter(doorMessageAdapter);
 		DoorMessge_list.setMode(Mode.BOTH);
 		gifimg.setBackgroundResource(R.anim.gifload);
@@ -133,6 +144,21 @@ public class DoorMessageActivity extends Activity{
 				 gifimg.setBackgroundResource(R.drawable.pic_emotion03_1);
 				 showtext.setText(masg);
 				break;
+			case 3:
+				dialog.show();
+				break;
+			case 4:
+				dialog.dismiss();
+				break;
+			case 5:
+				masg = "开门成功";
+				break;
+			case 6:
+				masg = "开门失败";
+				break;
+			case 7:
+				masg = "开门失败，请检查网络！";
+				break;
 			}
 			/**
 			 * 停止刷新
@@ -168,7 +194,7 @@ public class DoorMessageActivity extends Activity{
 				for (int i = 0; i < 10; i++) {
 					Map<String,String> map = new HashMap<String, String>();
 					map.put("DoorId", "编号：2467001"+i);
-					map.put("DoorStatus", "当前状态：已关闭");
+					map.put("DoorStatus", "当前状态：关门状态");
 					//map.put("DoorId", "2467001"+i);
 					list.add(map);
 				}
