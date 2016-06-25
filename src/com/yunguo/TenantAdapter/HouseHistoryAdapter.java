@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.yunguo.InfoBean.Historybean;
+import com.yunguo.InfoBean.HouseRentingBean;
 import com.yunguo.Tenant.R;
 
 import android.content.Context;
@@ -17,12 +17,12 @@ import android.widget.TextView;
 
 public class HouseHistoryAdapter extends BaseAdapter{
 	
-	private List<Historybean>  list = new ArrayList<Historybean>();
+	private List<HouseRentingBean>  list = new ArrayList<HouseRentingBean>();
     private Context context;
     private  ViewHolder viewHolder = null;
     private LayoutInflater mInflater;  
     
-    public HouseHistoryAdapter(List<Historybean> data , Context context){
+    public HouseHistoryAdapter(List<HouseRentingBean> data , Context context){
         this.list = data;
         this.context = context;
         mInflater = LayoutInflater.from(context); 
@@ -59,10 +59,10 @@ public class HouseHistoryAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
         
-        viewHolder.historyhousename.setText(list.get(position).getHistoryname());
-        viewHolder.historyownername.setText(list.get(position).getHistoryownername());
-        viewHolder.historyhouseaddress.setText(list.get(position).getHistoryadress());
-        viewHolder.historytime.setText(list.get(position).getHistorytime());
+        viewHolder.historyhousename.setText(list.get(position).getHouseName());
+        viewHolder.historyownername.setText(list.get(position).getOwnerName());
+        viewHolder.historyhouseaddress.setText(list.get(position).getHouseAdress());
+        viewHolder.historytime.setText(list.get(position).getRentingTime());
        
         return convertView;
     }

@@ -2,10 +2,8 @@ package com.yunguo.TenantAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.yunguo.InfoBean.NoteHistorybean;
-import com.yunguo.InfoBean.OpenHistorybean;
 import com.yunguo.Tenant.R;
 
 import android.content.Context;

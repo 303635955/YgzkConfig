@@ -66,11 +66,6 @@ public class HouseMessageFragment extends Fragment{
 	HouseMessageImpl houseMessageImpl = new HouseMessageImpl();
 	
 	/**
-	 * 等待窗口
-	 */
-	private ProgressDialog progressDialog;
-	
-	/**
 	 * 记录上拉下拉
 	 */
 	private Boolean fls = true;

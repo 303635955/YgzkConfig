@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.yunguo.InfoBean.OpenHistorybean;
+import com.yunguo.InfoBean.OpenDoorbean;
 import com.yunguo.Tenant.R;
 
 import android.content.Context;
@@ -17,12 +17,12 @@ import android.widget.TextView;
 
 public class HouseHistoryOpenAdapter extends BaseAdapter{
 	
-	private List<OpenHistorybean>  list = new ArrayList<OpenHistorybean>();
+	private List<OpenDoorbean>  list = new ArrayList<OpenDoorbean>();
     private Context context;
     private  ViewHolder viewHolder = null;
     private LayoutInflater mInflater;  
     
-    public HouseHistoryOpenAdapter(List<OpenHistorybean> data , Context context){
+    public HouseHistoryOpenAdapter(List<OpenDoorbean> data , Context context){
         this.list = data;
         this.context = context;
         mInflater = LayoutInflater.from(context); 
@@ -58,9 +58,9 @@ public class HouseHistoryOpenAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
         
-        viewHolder.historyhouseid.setText(list.get(position).getHistoryid());
-        viewHolder.historyownername.setText(list.get(position).getHistoryname());
-        viewHolder.historytime.setText(list.get(position).getHistorytime());
+        viewHolder.historyhouseid.setText(list.get(position).getDoorId());
+        viewHolder.historyownername.setText(list.get(position).getHouseName());
+        viewHolder.historytime.setText(list.get(position).getOpenDoorTime());
        
         return convertView;
     }

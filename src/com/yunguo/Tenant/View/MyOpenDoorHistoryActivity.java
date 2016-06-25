@@ -14,7 +14,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.yunguo.InfoBean.OpenHistorybean;
+import com.yunguo.InfoBean.HouseRentingBean;
+import com.yunguo.InfoBean.OpenDoorbean;
 import com.yunguo.Tenant.R;
 import com.yunguo.TenantAdapter.HouseHistoryAdapter;
 import com.yunguo.TenantAdapter.HouseHistoryOpenAdapter;
@@ -24,148 +25,145 @@ import com.yunguo.TenantModel.HouseMessageImpl;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("HandlerLeak")
 public class MyOpenDoorHistoryActivity extends Activity {
-	/**
-	 * listview
-	 */
-	private PullToRefreshListView HistoryMessge_list;
-	/**
-	 * 房屋列表适配器
-	 */
-	private HouseHistoryOpenAdapter messgeListAdapter;
-	private List<OpenHistorybean> data = new ArrayList<OpenHistorybean>();
-	/**
-	 * 求情网络
-	 */
-	HouseMessageImpl houseMessageImpl = new HouseMessageImpl();
+	private PullToRefreshListView HistoryMessge_list;	//listview数据列表
+	private HouseHistoryOpenAdapter messgeListAdapter;	//数据适配器
+	private List<OpenDoorbean> openDoorList = new ArrayList<OpenDoorbean>();	//开门记录信息
+	HouseMessageImpl houseMessageImpl = new HouseMessageImpl();	//请求数据接口
 	String masg = "";// 返回信息
-
-	/**
-	 * 等待窗口
-	 */
-	private ProgressDialog progressDialog;
-
-	/**
-	 * 记录上拉下拉
-	 */
-	private Boolean fls = true;
-
-	/*
-	 * @Override protected void onResume() { // TODO Auto-generated method stub
-	 * super.onResume(); // 当activity加载时,加载网络数据 // 显示等待框 progressDialog =
-	 * ProgressDialog.show(this, "请稍等", "正在获取...", true); // 获取数据 new
-	 * Thread(thread).start(); }
-	 */
-
+	private Boolean fls = true;	//记录上拉下拉
+	private ImageView gifimg;
+	private AnimationDrawable animaition;
+	private LinearLayout loadlinear;
+	private TextView showtext;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.history_open_activity);
+		
+		findView();
+		setAdapter();
+		setOnClick();
+		getOpenDoorRecord("",handler);
+
+	};
+	
+	private void findView(){
 		HistoryMessge_list = (PullToRefreshListView) findViewById(R.id.history_OpenHouseMessge_list);
-		data = getData();  
-		messgeListAdapter = new HouseHistoryOpenAdapter(data, this);
+		
+		loadlinear = (LinearLayout) findViewById(R.id.loadlinear);
+		gifimg = (ImageView) findViewById(R.id.gifimg);
+		showtext = (TextView) findViewById(R.id.showtext);
+	}
+	
+	/**
+	 * 数据初始化
+	 */
+	private void setAdapter(){
+		messgeListAdapter = new HouseHistoryOpenAdapter(openDoorList, this);
 		HistoryMessge_list.setAdapter(messgeListAdapter);
 		HistoryMessge_list.setMode(Mode.BOTH);
-
-		init();
-		HistoryMessge_list
-				.setOnRefreshListener(new OnRefreshListener2<ListView>() {
-					@Override
-					public void onPullDownToRefresh(
-							PullToRefreshBase<ListView> refreshView) {
-						// TODO Auto-generated method stub
-						OpenHistorybean bean = new OpenHistorybean();  
-						bean.setHistoryid("1002");
-						bean.setHistoryname("王五");
-						bean.setHistorytime("2015/12/15 12:29");  
-		               //messgeListAdapter.addFirst(bean);
-						new FinishRefresh().execute();
-						messgeListAdapter.notifyDataSetChanged();
-					}
-
-					@Override
-					public void onPullUpToRefresh(
-							PullToRefreshBase<ListView> refreshView) {
-						// TODO Auto-generated method stub
-						OpenHistorybean bean = new OpenHistorybean();  
-						bean.setHistoryid("1002");
-						bean.setHistoryname("王五");
-						bean.setHistorytime("2015/12/15 12:29");
-						//messgeListAdapter.addLast(bean);
-						new FinishRefresh().execute();
-						messgeListAdapter.notifyDataSetChanged();
-					}
-				});
-	};
-
-	private void init() {
-		ILoadingLayout startLabels = HistoryMessge_list.getLoadingLayoutProxy(
-				true, false);
-		startLabels.setPullLabel("下拉刷新...");// 刚下拉时，显示的提示
-		startLabels.setRefreshingLabel("正在载入...");// 刷新时
-		startLabels.setReleaseLabel("放开刷新...");// 下来达到一定距离时，显示的提示
-
-		ILoadingLayout endLabels = HistoryMessge_list.getLoadingLayoutProxy(
-				false, true);
-		endLabels.setPullLabel("上拉刷新...");// 刚下拉时，显示的提示
-		endLabels.setRefreshingLabel("正在载入...");// 刷新时
-		endLabels.setReleaseLabel("放开刷新...");// 下来达到一定距离时，显示的提示
-	}
-
-	private List<OpenHistorybean> getData() {
-		List<OpenHistorybean> list = new ArrayList<OpenHistorybean>();
-		for (int i = 0; i < 10; i++) {
-			OpenHistorybean bean = new OpenHistorybean();
-			bean.setHistoryid("1002"+i);
-			bean.setHistoryname("王五");
-			bean.setHistorytime("2015/12/15 12:29");
-			list.add(bean);
-		}
-
-		return list;
-	}
-
-	private class FinishRefresh extends AsyncTask<Void, Void, Void> {
-		List<OpenHistorybean> list = new ArrayList<OpenHistorybean>();
-		@Override
-		protected Void doInBackground(Void... params) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Void result) {
-			for (int i = 0; i < 10; i++) {
-				OpenHistorybean bean = new OpenHistorybean();
-				bean.setHistoryid("1002"+i);
-				bean.setHistoryname("王五");
-				bean.setHistorytime("2015/12/15 12:29");
-				data.add(bean);
-			}
- 
-			messgeListAdapter.notifyDataSetChanged();
-			HistoryMessge_list.onRefreshComplete();
-			Toast.makeText(MyOpenDoorHistoryActivity.this,"执行结束", Toast.LENGTH_SHORT).show();
-		}
+		HistoryMessge_list.setVisibility(View.GONE);
 		
-		@Override
-		protected void onProgressUpdate(Void... values) {
-			// TODO Auto-generated method stub
-			super.onProgressUpdate(values);
-		}
+		gifimg.setBackgroundResource(R.anim.gifload);
+		animaition = (AnimationDrawable) gifimg.getBackground();
+		animaition.setOneShot(false);
 	}
+	
+	private void setOnClick(){
+		HistoryMessge_list.setOnRefreshListener(new OnRefreshListener2<ListView>() {
+			@Override
+			public void onPullDownToRefresh(
+					PullToRefreshBase<ListView> refreshView) {
+				fls = true;
+				getOpenDoorRecord("",handler);
+			}
+
+			@Override
+			public void onPullUpToRefresh(
+					PullToRefreshBase<ListView> refreshView) {
+				fls = true;
+				getOpenDoorRecord("",handler);
+			}
+		});
+	}
+	
+	private Handler handler = new Handler(){
+		@SuppressWarnings("unchecked")
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			animaition.stop();
+			switch (msg.what) {
+			case 0:
+				List<OpenDoorbean> list = new ArrayList<OpenDoorbean>();
+				list = (List<OpenDoorbean>) msg.obj;
+				HistoryMessge_list.setVisibility(View.VISIBLE);
+				if(fls){
+					openDoorList.clear();
+				}
+				openDoorList.addAll(list);
+				messgeListAdapter.notifyDataSetChanged();
+				masg = "查询成功！";
+				loadlinear.setVisibility(View.GONE);
+				break;
+			case 1:
+				masg = "目前没有租房记录哦！";
+				showtext.setText(masg);
+				gifimg.setBackgroundResource(R.drawable.pic_emotion03_1);
+				break;
+			case 2:
+				masg = "查询失败，请检查网络！";
+				gifimg.setBackgroundResource(R.drawable.pic_emotion03_1);
+				showtext.setText(masg);
+				break;
+			}
+			HistoryMessge_list.onRefreshComplete();//停止刷新
+			Toast.makeText(getApplicationContext(), masg, Toast.LENGTH_SHORT).show(); //提示信息
+		};
+	};
+	
+	private void getOpenDoorRecord(String param,final Handler handler){
+		animaition.start();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				//queryRecordImpl.GetHOpenDoorRecord("",handler);
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				List<OpenDoorbean> list = new ArrayList<OpenDoorbean>();
+				for (int i = 0; i < 10; i++) {
+					OpenDoorbean openDoorbean = new OpenDoorbean();
+					openDoorbean.setHouseName("保利新天地"+i);
+					openDoorbean.setDoorId("1号门");
+					openDoorbean.setUserName("成都市郫县百草路保利新天地11栋625室");
+					openDoorbean.setOpenDoorTime("2016/6/26");
+					list.add(openDoorbean);
+				}
+				Message message = new Message();
+				message.obj = list;
+				message.what = 0 ;
+				handler.sendMessage(message);
+			}
+		}).start();
+	}
+
+
 }
