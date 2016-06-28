@@ -58,10 +58,10 @@ public class HouseHistorySwingAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
         
-        viewHolder.historyhouseid.setText(list.get(position).getHistoryid());
-        viewHolder.historyhousename.setText(list.get(position).getHistoryhousename());
-        viewHolder.historything.setText(list.get(position).getHistoryhousething());
-        viewHolder.historytime.setText(list.get(position).getHistorytime());
+        viewHolder.historyhouseid.setText(list.get(position).getCreditCardDoorId());
+        viewHolder.historyhousename.setText(list.get(position).getHouseName());
+        viewHolder.historything.setText(list.get(position).getUserName());
+        viewHolder.historytime.setText(list.get(position).getCreditCardTime());
        
         return convertView;
     }

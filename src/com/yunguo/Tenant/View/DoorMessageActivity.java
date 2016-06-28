@@ -195,7 +195,6 @@ public class DoorMessageActivity extends Activity{
 					Map<String,String> map = new HashMap<String, String>();
 					map.put("DoorId", "编号：2467001"+i);
 					map.put("DoorStatus", "当前状态：关门状态");
-					//map.put("DoorId", "2467001"+i);
 					list.add(map);
 				}
 				Message message = new Message();

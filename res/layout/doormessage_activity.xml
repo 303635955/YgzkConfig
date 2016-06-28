@@ -7,7 +7,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        android:background="#F8626B"
+        android:background="#5CA7BA"
         android:orientation="horizontal">
         <ImageButton
             android:id="@+id/door_back"

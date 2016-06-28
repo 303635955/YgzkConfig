@@ -40,7 +40,7 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="15dip"
         android:layout_alignParentRight="true"
-        android:background="#F8626B"
+        android:background="#5CA7BA"
         android:enabled="false"
         android:textSize="20sp"
         android:textColor="#FFFFFF"

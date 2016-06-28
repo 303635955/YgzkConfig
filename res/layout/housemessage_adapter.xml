@@ -8,19 +8,21 @@
         android:layout_height="wrap_content"
          android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="25dp"
-        android:src="@drawable/content_but_hezu_default"/>
+        android:layout_marginRight="20dp"
+        android:src="@drawable/content_but_subscribe_default"/>
     <TextView
         android:id="@+id/housename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img_title"
-        android:layout_marginLeft="10dip"
+        android:layout_marginLeft="5dip"
         android:layout_marginTop="5dip"
+        android:paddingLeft="5dip"
+        android:drawableLeft="@drawable/pb_assist"
         android:textSize="20sp"
         android:textColor="#000"
         android:text="保利国际"/>
-    <TextView
+    <!-- <TextView
         android:id="@+id/ownername" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,17 +31,17 @@
         android:layout_below="@id/housename"
         android:layout_marginTop="5dip"
         android:textColor="#000"
-        android:textSize="16sp"
-        android:text="房东:小张"/>
+        android:textSize="16sp"/> -->
     <TextView
         android:id="@+id/houseaddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ownername"
-        android:layout_alignLeft="@id/ownername"
+        android:layout_below="@id/housename"
+        android:layout_alignLeft="@id/housename"
         android:layout_marginTop="5dip"
+        android:drawableLeft="@drawable/icon_activity_lbs_n_1"
         android:textColor="#363636"
-        android:text="地址：成都市百草路保利国际8栋605"/>
+        android:text="成都市百草路保利国际8栋605"/>
     
      <View
         android:layout_width="match_parent"
@@ -47,6 +49,6 @@
         android:layout_below="@id/houseaddress"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="#E5E5E5"/>
+        android:background="#C7C7CB"/>
     
 </RelativeLayout>

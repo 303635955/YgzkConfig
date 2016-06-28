@@ -1,53 +1,32 @@
 package com.yunguo.InfoBean;
 
-import java.util.List;
-import java.util.Map;
-
 public class SwingHistorybean {
-	private List<Map<String, Object>> listItems;
-	private String historyid;
-	private String historyhousename;
-	private String historyhousething;
-	private String historytime;
-	
-	public String getHistoryid() {
-		return historyid;
+	private String HouseName;	//房屋名
+	private String UserName;	//刷卡用户名
+	private String CreditCardDoorId;	//门ID
+	private String CreditCardTime;	//刷卡时间
+	public String getHouseName() {
+		return HouseName;
 	}
-
-	public void setHistoryid(String historyid) {
-		this.historyid = historyid;
+	public void setHouseName(String houseName) {
+		HouseName = houseName;
 	}
-
-
-	public String getHistoryhousename() {
-		return historyhousename;
+	public String getUserName() {
+		return UserName;
 	}
-
-	public void setHistoryhousename(String historyhousename) {
-		this.historyhousename = historyhousename;
+	public void setUserName(String userName) {
+		UserName = userName;
 	}
-
-	public String getHistoryhousething() {
-		return historyhousething;
+	public String getCreditCardDoorId() {
+		return CreditCardDoorId;
 	}
-
-	public void setHistoryhousething(String historyhousething) {
-		this.historyhousething = historyhousething;
+	public void setCreditCardDoorId(String creditCardDoorId) {
+		CreditCardDoorId = creditCardDoorId;
 	}
-
-	public String getHistorytime() {
-		return historytime;
+	public String getCreditCardTime() {
+		return CreditCardTime;
 	}
-
-	public void setHistorytime(String historytime) {
-		this.historytime = historytime;
-	}
-
-	public void setListItems(List<Map<String, Object>> listItems) {
-		this.listItems = listItems;
-	}
-
-	public List<Map<String, Object>> getListItems() {
-		return listItems;
+	public void setCreditCardTime(String creditCardTime) {
+		CreditCardTime = creditCardTime;
 	}
 }

@@ -1,39 +1,24 @@
 package com.yunguo.Tenant.View;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.yunguo.InfoBean.HouseRentingBean;
 import com.yunguo.InfoBean.OpenDoorbean;
 import com.yunguo.Tenant.R;
-import com.yunguo.TenantAdapter.HouseHistoryAdapter;
 import com.yunguo.TenantAdapter.HouseHistoryOpenAdapter;
-import com.yunguo.TenantAdapter.HouseMessageAdapter;
 import com.yunguo.TenantModel.HouseMessageImpl;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.graphics.drawable.AnimationDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -45,13 +30,13 @@ public class MyOpenDoorHistoryActivity extends Activity {
 	private PullToRefreshListView HistoryMessge_list;	//listview数据列表
 	private HouseHistoryOpenAdapter messgeListAdapter;	//数据适配器
 	private List<OpenDoorbean> openDoorList = new ArrayList<OpenDoorbean>();	//开门记录信息
-	HouseMessageImpl houseMessageImpl = new HouseMessageImpl();	//请求数据接口
-	String masg = "";// 返回信息
+	private HouseMessageImpl houseMessageImpl = new HouseMessageImpl();	//请求数据接口
+	private String masg = "";// 返回信息
 	private Boolean fls = true;	//记录上拉下拉
-	private ImageView gifimg;
-	private AnimationDrawable animaition;
-	private LinearLayout loadlinear;
-	private TextView showtext;
+	private ImageView gifimg;	//等待图片
+	private AnimationDrawable animaition;	//动画
+	private LinearLayout loadlinear;	
+	private TextView showtext;	//等待提示
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.history_open_activity);
@@ -97,7 +82,7 @@ public class MyOpenDoorHistoryActivity extends Activity {
 			@Override
 			public void onPullUpToRefresh(
 					PullToRefreshBase<ListView> refreshView) {
-				fls = true;
+				fls = false;
 				getOpenDoorRecord("",handler);
 			}
 		});

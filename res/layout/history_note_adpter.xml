@@ -40,9 +40,9 @@
         android:id="@+id/house_notehistory_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/house_notehistory_ownername"
+        android:layout_below="@id/house_notehistory_ownername"
         android:layout_marginLeft="20dip"
-        android:layout_toRightOf="@id/house_notehistory_ownername"
+        android:layout_toRightOf="@id/img_note_title"
         android:text="2015/5/1 12:00"
         android:textSize="17sp" 
         android:textColor="#000"/>
